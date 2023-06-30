@@ -21,6 +21,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v3
+        fetch-depth: 0
       - name: install deps
         run: |
           pip install requests
@@ -33,7 +34,7 @@ jobs:
         run: |
           echo "Showing last commit:"
           git show --name-only
-          if [ "${{ github.event.inputs.runall }}" = "yes" ]; then
+          if [ "${{ github.event.inputs.runall }}" = "yes" ] || [ "${{ github.event.inputs.runall }}" = "true" ]; then
             cd .github/scripts/ && python e2e.py --e2e_workspace=$WORKSPACE --papi_url=$API_URL --runall
           else
             cd .github/scripts/ && python e2e.py --e2e_workspace=$WORKSPACE --papi_url=$API_URL
