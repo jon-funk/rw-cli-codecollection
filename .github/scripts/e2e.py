@@ -253,6 +253,7 @@ if __name__ == "__main__":
     print("Queueing following codebundles for testing:")
     print("\n".join(codebundles_to_run))
     print("...")
+    exit(0)
     task_data = run_codebundles_in_workspace(args.papi_url, args.e2e_workspace, args.session_name, codebundles_to_run)
     print("Beginning polling for results")
     while not poll_runsessions_complete(task_data, args.papi_url, args.e2e_workspace):

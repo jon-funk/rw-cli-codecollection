@@ -31,6 +31,8 @@ jobs:
           API_URL: https://backend-services.dev.project-468.com/api/v3
           WORKSPACE: ob-1-small
         run: |
+          echo "Showing last commit:"
+          git show --name-only
           if [ "${{ github.event.inputs.runall }}" = "yes" ]; then
             cd .github/scripts/ && python e2e.py --e2e_workspace=$WORKSPACE --papi_url=$API_URL --runall
           else
